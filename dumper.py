@@ -179,7 +179,7 @@ def dumper():
     personnage.pop(3)
     mot_de_passe = generer_mot_de_passe(personnage)
     mdp=unidecode(mot_de_passe)
-    print(mdp)
+    #print(mdp)
     return mdp
     #time.sleep(1000)
         
