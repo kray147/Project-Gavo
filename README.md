@@ -28,7 +28,7 @@ In the first place, I was developing a custom wordlist builder in Python. Howeve
 
 ### II) The Fake Person Maker
 
--**Functionalities:** It is only able to generate french persons for now, with french labours etc... but soon I will change the structure to be able to use any csv file as base for the generation database thus ensuring
+- **Functionalities:** It is only able to generate french persons for now, with french labours etc... but soon I will change the structure to be able to use any csv file as base for the generation database thus ensuring
 compatibility with other languages.
 - **Option 3:** This is the most comprehensive option. It generates a fake individual and associated life data. You can then choose to create a custom wordlist based on this information and test it out. You'll receive a validation message if it works!
 
