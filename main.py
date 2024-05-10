@@ -95,14 +95,14 @@ def passw(passa,patha):
     else:
         ask=passa
     if patha=="":
-        ff=input("What dictionnary do u want to use ?: ")
+        ff=input("What dictionnary do u wanna use ?: ")
     else:
         ff=patha
     dir=os.path.dirname(__file__)
     path = os.path.join(dir, ff)
     
     if not os.path.exists(path):
-        print(f"The file {ff} does not exist. Don't forget to put your dic in the same directory as this program ! \n")
+        print(f"The file {ff} does not exist. Don't forget to put your dictionary in the same directory as this program ! \n")
         time.sleep(5)
         passw()
 
@@ -129,6 +129,7 @@ def passw(passa,patha):
     
     print("No luck :(")
     time.sleep(5)
+    print("")
     loading_animation(50)
     __main__()
 
@@ -151,8 +152,6 @@ ______
     # Fonction pour afficher une ligne colorée et avec effet de délai
     def afficher_ligne(ligne):
         for caractere in ligne:
-            #couleur = 'green'
-            #sys.stdout.write(colored(caractere, couleur))
             sys.stdout.write(caractere)
 
             sys.stdout.flush()
@@ -192,9 +191,9 @@ def __main__():
     elif take==3:
         mark=1
         mdp=dumper.dumper()
-        print("\n Now do ur magic with the dictionnary")
-        pathom=wordlist("ara")
-        print("Pour l'instant voilà l'état des choses:", mdp,"et ",pathom)
+        print("\nNow do ur magic with the dictionnary")
+        pathom=wordlist("ara") #the "ara" thing is here only to not leave wordlist() blank or else it won't do as intended
+        #print("Pour l'instant voilà l'état des choses:", mdp,"et ",pathom)
         passw(mdp,pathom)
 
         
