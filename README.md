@@ -1,13 +1,14 @@
 # Project Gavo
 
-Welcome to Project Gavo! This is an experimental pentesting tool that aims to generate custom wordlists for use in brute force attacks against specific users based on their information.
+Welcome to Project Gavo! This is an experimental pentesting tool that aims to generate custom wordlists to use in brute force attacks against a specific user based on their information.
 
-This application requires `itertools` and `unidecode`. If you don't have them installed, simply run and to get out of this:
+This application requires `itertools` and `unidecode`. If you don't have them installed, simply "pip install" your way out of this:
 pip install itertools
 pip install unidecode
 
 
-**Note:** This script is more of a fun project than something genuinely useful.
+
+**Note:** This script is more of a fun project than something really useful.
 
 ## News!
 
@@ -15,7 +16,7 @@ Soon enough, i will make the person generator usable without option 3
 
 ## Purpose
 
-In the first place, I was developing a custom wordlist builder in Python. However, I thought it would be amusing to mix it with a random person creator to simulate real attacks against passwords.
+In the first place, I was developing a custom wordlist builder in Python. However, I thought it would be amusing to mix it with a random person creator to simulate real attacks against one's password.
 
 **Disclaimer:** I don't consider this tool very dangerous, but it should not be used for malicious purposes such as brute force attacks against real people. I take no responsibility for any harm that could be done. I'm only the developer of a tool built for fun.
 
