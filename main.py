@@ -8,6 +8,13 @@ import dumper
 
 
 
+########################################################
+#THIS IS WHERE YOU CHOOSE THE ENGLISH OR FRENCH DATASET
+
+filetoread="englishdata.csv" #or "frenchdata.csv" if you want the french version
+
+##########################################################
+
 def loading_animation(total_iterations):
     for i in range(1, total_iterations + 1):
         progress_bar = "-" * i
@@ -133,6 +140,16 @@ def passw(passa,patha):
     loading_animation(50)
     __main__()
 
+
+def help():
+    print("""\nAn important thing to know is that you can change whether you want people to be generated
+in French (my mother tongue) or in English. Profiles are generated in english by default.
+You can do so by changing the csv file used in the "gavo.py" file at line 10.
+          """)
+    ask=input("Type enter to go back to main menu !\n")
+    if ask!=None:
+        __main__()
+
 def animation():
     # Définit le texte à afficher
     texte = r"""
@@ -173,10 +190,13 @@ def __main__():
     global mark
     if mark==0:
         animation()
-    
+    print("Type 0 if you want some help \n")
     print("Type 1 if you wanna create your custom wordlist \n")
     print("Type 2 if you wanna test if your dictionnary contain a password\n")
-    print("Type 3 if you wanna generate a fake person and test a dictionnary of your own against em\n")
+    print("Type 3 if you wanna generate a fake person (profile generator) and test a dictionnary of your own against em\n")
+    print("Type 4 if you want to use the profile generator alone")
+    
+
     
     take=int(input("Your choice ?: "))
     if take==1:
@@ -190,11 +210,17 @@ def __main__():
 
     elif take==3:
         mark=1
-        mdp=dumper.dumper()
+        mdp=dumper.dumper(filetoread)
         print("\nNow do ur magic with the dictionnary")
         pathom=wordlist("ara") #the "ara" thing is here only to not leave wordlist() blank or else it won't do as intended
         #print("Pour l'instant voilà l'état des choses:", mdp,"et ",pathom)
         passw(mdp,pathom)
+    elif take==0:
+        mark=1
+        help()
+    elif take==4:
+        print("Here is a random person:\n")
+        dumper.dumper(filetoread)
 
         
     else:
