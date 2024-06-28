@@ -1,38 +1,114 @@
-# Project Gavo
+# Wordlist Wizard 🧙‍♂️
 
-Welcome to Project Gavo! This is an experimental pentesting tool that aims to generate custom wordlists to use in brute force attacks against a specific user based on their information.
+Welcome to **Wordlist Wizard** – the ultimate tool for creating customized wordlists, testing passwords against them, and even generating fake profiles. This project is as magical as it sounds, but remember, with great power comes great responsibility. 🪄✨
 
-This application requires `itertools` and `unidecode`. If you don't have them installed, simply "pip install" your way out of this:
-pip install itertools
-pip install unidecode
+## Table of Contents
 
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Creating a Wordlist](#creating-a-wordlist)
+  - [Testing a Password](#testing-a-password)
+  - [Generating a Fake Profile](#generating-a-fake-profile)
+  - [Help Menu](#help-menu)
+- [Disclaimer](#disclaimer)
 
+## Introduction
 
-**Note:** This script is more of a fun project than something really useful.
+Wordlist Wizard is your trusty companion for generating custom wordlists, checking if your passwords are up to snuff, and even creating fake profiles for testing purposes. Whether you want to create a list of potential passwords or test your security against a dictionary attack, this tool has got you covered.
 
-## News!
+## Features
 
-Soon enough, i will make the person generator usable without option 3
+- **Custom Wordlist Generation**: Mix and match words to create a unique wordlist.
+- **Password Testing**: Check if a password is in your custom dictionary.
+- **Fake Profile Generator**: Generate fake English or French profiles for testing purposes.
+- **Interactive and User-Friendly**: Easy-to-use menu with fun loading animations.
 
-## Purpose
+## Installation
 
-In the first place, I was developing a custom wordlist builder in Python. However, I thought it would be amusing to mix it with a random person creator to simulate real attacks against one's password.
+Before you can summon the powers of the Wordlist Wizard, you need to install the required dependencies. Open your terminal and cast the following spell:
 
-**Disclaimer:** I don't consider this tool very dangerous, but it should not be used for malicious purposes such as brute force attacks against real people. I take no responsibility for any harm that could be done. I'm only the developer of a tool built for fun.
+```bash
+pip install termcolor unidecode
+```
 
-## Functionality
+## Usage
 
-### I) The Wordlist Builder
+Once your environment is set up, run the `main.py` script to access the magical menu:
 
-- **Option 1:** Helps you generate a custom wordlist.
-- **Option 2:** A test feature to verify the generated wordlist contains a password that should be in it.
+```bash
+python main.py
+```
 
-### II) The Fake Person Maker
+### Creating a Wordlist
 
-- **Functionalities:** It is only able to generate french persons for now, with french labours etc... but soon I will change the structure to be able to use any csv file as base for the generation database thus ensuring
-compatibility with other languages.
-- **Option 3:** This is the most comprehensive option. It generates a fake individual and associated life data. You can then choose to create a custom wordlist based on this information and test it out. You'll receive a validation message if it works!
+1. Choose option `1` in the menu.
+2. Follow the prompts to input words you want to include in the wordlist.
+3. Optionally, add basic characters (like `1,2,3,...,9,!,_,-`).
+4. Name your output file (don't forget to add `.txt` at the end).
 
-That's all for now! Enjoy using Project Gavo :)
+### Testing a Password
 
-**Author:** QuantumKray
+1. Choose option `2` in the menu.
+2. Provide the password you want to test.
+3. Specify the dictionary file you want to use.
+4. The wizard will let you know if your password was found.
+
+### Generating a Fake Profile
+
+1. Choose option `4` in the menu.
+2. A random English or French profile will be generated.
+
+### Help Menu
+
+1. Choose option `0` in the menu.
+2. Get useful information about the tool and how to switch between English and French datasets.
+
+## Dumper: The Profile Generator
+
+The `dumper` module is an integral part of Wordlist Wizard, providing the ability to generate random profiles. Here's how it works:
+
+### How It Works
+
+- **Dataset Loading**: Loads a dataset (either in English or French) to gather names, professions, hobbies, etc.
+- **Random Profile Generation**: Creates a profile with randomly selected attributes such as name, date of birth, profession, hobbies, and even pets.
+- **Password Generation**: Constructs a password based on the generated profile attributes.
+
+### Sample Output
+
+A generated profile might look like this:
+
+```
+PROFIL:
+PRENOM: John
+NOM: DOE
+DATE DE NAISSANCE: 15/07/1985
+NOMBRE DE FRÈRES ET SŒURS: 2
+FRÈRES ET SŒURS:
+  - Nom: Jane
+    Date de naissance: 12/03/1990
+  - Nom: Jack
+    Date de naissance: 20/05/1992
+PARENTS:
+  - Nom: Michael
+    Date de naissance: 04/04/1960
+  - Nom: Sarah
+    Date de naissance: 10/10/1962
+MÉTIER: engineer
+HOBBY: reading
+ANIMAL DE COMPAGNIE: dog
+SURNOM DE L'ANIMAL: buddy
+```
+
+The `dumper` module not only generates these profiles but also creates a sample password based on them, ensuring it's a fun and informative tool for security testing.
+
+## Disclaimer
+
+⚠️ **DISCLAIMER** ⚠️
+
+This tool is intended for educational purposes and to help improve security by demonstrating the importance of strong passwords. **Do not use this tool for any malicious activities.** The author is not responsible for any misuse of this tool. Always use your powers for good!
+
+---
+
+Dive into the world of Wordlist Wizardry and may your passwords be ever strong! 🧙‍♂️🔒
