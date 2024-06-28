@@ -181,10 +181,27 @@ ______
 
     loading_animation(50)
     print("Welcome, what do you seek stranger ?\n")
+    return 0
 
 
 
 mark=0
+
+def opt4():
+    print("Here is a random person:\n")
+    dumper.dumper(filetoread)
+    print("\n")
+    ask=input("Type enter to go back to main menu or 'm' if you want another generation!\n")
+    if ask!=None and ask!="m":
+         __main__()
+    elif ask=="m":
+        print("\n")
+        print("------------------------------------------")
+        opt4()
+
+    return 0
+
+
 
 def __main__():
     global mark
@@ -194,7 +211,7 @@ def __main__():
     print("Type 1 if you wanna create your custom wordlist \n")
     print("Type 2 if you wanna test if your dictionnary contain a password\n")
     print("Type 3 if you wanna generate a fake person (profile generator) and test a dictionnary of your own against em\n")
-    print("Type 4 if you want to use the profile generator alone")
+    print("Type 4 if you want to use the profile generator alone\n")
     
 
     
@@ -218,13 +235,15 @@ def __main__():
     elif take==0:
         mark=1
         help()
+        
     elif take==4:
-        print("Here is a random person:\n")
-        dumper.dumper(filetoread)
+        mark=1
+        opt4()
 
         
     else:
-        print("Type a valid input !!! \n")
+        mark=1
+        print("\nType a valid input !!! \n")
         print("------------------------------------------------")
         __main__()
     return 0
