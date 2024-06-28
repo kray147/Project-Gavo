@@ -1,8 +1,9 @@
 import random
 import time
 from unidecode import unidecode 
+import os
 
-def dumper():
+def dumper(dataset):
     
     def bartester(mot):
         temp=[]
@@ -38,18 +39,46 @@ def dumper():
 
 
     def generer_personnage():
-        prenoms_masculins =  ["Thibault", "Maxime", "Antoine", "Lucas", "Hugo", "Nicolas", "Arthur", "Thomas", "Alexandre", "Quentin", "Paul", "Louis", "Julien", "Gabriel", "Matthieu", "Vincent", "Baptiste", "Romain", "Simon", "Pierre", "Mathieu", "Adrien", "Clément", "Guillaume", "David", "Damien", "Jules", "Benjamin", "Cédric", "Rémi", "Sébastien", "Laurent", "Étienne", "Alexis", "Anthony", "Michaël", "Florian", "Olivier", "François", "Sylvain", "Jonathan", "Xavier", "Raphaël", "Jean", "Cyril", "Dylan", "Christophe", "Kevin", "Mickaël", "Philippe", "Jimmy", "Dimitri", "Morgan", "Julian", "Arnaud", "Éric", "Christian", "Fabien", "Noël", "Alain", "Théo", "Robert", "Joseph", "Marc", "Georges", "Patrick", "André", "René", "Raymond", "Gérard", "Roland", "Léon", "Albert", "Claude", "Bertrand", "Émile", "Denis", "Maurice", "Yves", "Marcel", "Vincent", "Jacques", "Roger", "Fernand", "François", "Henri", "Pierre", "Bruno", "Charles", "Sébastien", "Jean-Claude", "André", "Éric", "François", "Luc"]
-        prenoms_feminins = ["Camille", "Sarah", "Emma", "Manon", "Léa", "Chloé", "Inès", "Louise", "Jade", "Alice", "Anna", "Juliette", "Lola", "Clara", "Zoé", "Romane", "Lina", "Charlotte", "Eva", "Margaux", "Lisa", "Maëlle", "Louna", "Mathilde", "Léna", "Lucie", "Mila", "Nina", "Eléna", "Laura", "Elsa", "Océane", "Jeanne", "Olivia", "Noémie", "Rose", "Margot", "Agathe", "Sofia", "Alicia", "Ambre", "Lou", "Julie", "Julia", "Anaïs", "Amandine", "Mélanie", "Marine", "Pauline", "Capucine", "Valentine", "Émilie", "Maelle", "Salomé", "Manon", "Louisa", "Laure", "Romane", "Diane", "Hélène", "Céline", "Caroline", "Nathalie", "Sandra", "Mélissa", "Stéphanie", "Clémentine", "Sabrina", "Elodie", "Aurélie", "Fanny", "Marion", "Agnès", "Véronique", "Laetitia", "Colette", "Coralie", "Claire", "Élodie", "Nicole", "Sylvie", "Cécile", "Marguerite", "Monique", "Nadine", "Christine", "Sophie", "Catherine", "Marie", "Isabelle", "Véronique", "Patricia", "Annie", "Valérie", "Catherine", "Suzanne", "Josette"]
-        noms = ["Martin", "Bernard", "Dubois", "Thomas", "Robert", "Richard", "Petit", "Durand", "Leroy", "Moreau", "Simon", "Laurent", "Lefebvre", "Michel", "Garcia", "David", "Bertrand", "Roux", "Vincent", "Fournier", "Morel", "Girard", "Andre", "Lefevre", "Mercier", "Dupont", "Lambert", "Bonnet", "Francois", "Martinez", "Legrand", "Garnier", "Faure", "Rousseau", "Blanc", "Guerin", "Muller", "Henry", "Roussel", "Nicolas", "Perrin", "Morin", "Mathieu", "Clement", "Gauthier", "Dumont", "Lemaire", "Marie", "Noel", "Meunier", "Jacques", "Caron", "Carre", "Menard", "Barbier", "Brun", "Guy", "Prevost", "Perez", "Sanchez", "Joly", "Marchand", "Dumas", "Blanchard", "Huet", "Brunet", "Schmitt", "Dufour", "Ruiz", "Delaunay", "Albert", "Colin", "Renard", "Picard", "Chevalier", "Leclerc", "Lopez", "Gomez", "Leclercq", "Bourgeois", "Devaux", "Benoit", "Guillaume", "Bertin", "Roger", "Rolland", "Roche", "Marty", "Payet", "Pierre", "Denis", "Robin", "Rodriguez"]
 
-        nb_freres_soeurs = ["0", "1", "2", "3", "4"]
-        metiers = ["ingénieur", "artiste", "médecin", "enseignant", "avocat", "informaticien", "pompier", "policier", "chef", "architecte", "comptable", "pharmacien", "vétérinaire", "jardinier", "boulanger", "cuisinier", "journaliste", "plombier", "électricien", "maçon", "carpenter", "charpentier", "plâtrier", "menuisier", "peintre", "serrurier", "mécanicien", "garagiste", "tailleur", "couturier", "coiffeur", "esthéticien", "serveur", "barman", "gérant", "banquier", "économiste", "psychologue", "conseiller", "consultant", "directeur", "manager", "receptionniste", "technicien", "analyste", "chercheur", "professeur", "thérapeute", "ergothérapeute", "diététicien", "orthophoniste", "infirmier", "aide-soignant", "secrétaire", "assistante", "opérateur", "ouvrier", "chauffeur", "livreur", "magasinier", "réparateur", "agent", "technicien", "technologiste", "téléopérateur", "développeur", "webdesigner", "graphiste", "artiste", "photographe", "cinéaste", "musicien", "chanteur", "acteur", "athlète", "coach", "athlétique", "entraîneur", "astronome", "biologiste", "chimiste", "géologue", "mathématicien", "physicien", "statisticien", "zoologiste", "horticulteur", "marin", "généraliste", "géomètre", "nutritionniste", "opticien", "préparateur", "psychiatre", "radiologue"]
+        """
+        Exploitation du csv
+        
+        """
+        os.chdir(os.path.dirname(__file__))
+        file=open(dataset,mode="r",encoding='utf8')
+        file.readline()
+        data=[]  
+        for line in file:
+            reader=line.split(";")
+            reader[7]=reader[7].replace("\n","")
+            data.append(reader)
+        file.close()
 
-        hobbies = ["lecture", "voyage", "peinture", "cuisine", "sport", "musique", "jardinage", "photographie", "bricolage", "couture", "randonnée", "natation", "équitation", "cinéma", "théâtre", "danse", "yoga", "pêche", "plongée", "escalade", "ski", "surf", "kitesurf", "volleyball", "basketball", "football", "tennis", "golf", "badminton", "vélo", "course", "karaté", "judo", "aïkido", "boxe", "taekwondo", "bowling", "billard", "chasse", "astronomie", "lecture", "écriture", "calligraphie", "peinture", "sculpture", "poterie", "modélisme", "philatélie", "numismatique", "cuisine", "oenologie", "mixologie", "cuisine", "bénévolat", "écologie", "jardinage", "bricolage", "voyage", "aventure", "découverte", "photo", "vidéo", "informatique",  "self-defense", "méditation", "relaxation", "lecture", "écriture", "musique", "chant", "danse", "théâtre", "improvisation", "couture", "tricot", "crochet", "maroquinerie", "photographie", "vidéo", "astronomie", "archéologie", "généalogie", "course", "marche", "yoga", "fitness", "crossfit", "pilates", "escalade"]
 
-        animaux = ["Chien", "Chat", "Poisson", "Oiseau", "Lapin", None]  # Ajout de None pour signifier l'absence d'animal
-        surnoms_animaux = ["Titi", "Minou", "Coco", "Loulou", "Mimi", "Doudou", "Félix", "Mistigri", "Bella", "Moustique"]
+        def tablewriter(row):
+            table=[]
+            i=0
+            j=0
+            for i in range(0,len(data)):
+                j=data[i][row]
+                if j=="":
+                    break
+                table.append(j)
+            return table
 
+
+
+        prenoms_masculins=tablewriter(0)
+        prenoms_feminins=tablewriter(1)
+        noms=tablewriter(2)
+        nb_freres_soeurs=tablewriter(3)
+        metiers=tablewriter(4)
+        hobbies=tablewriter(5)
+        animaux=tablewriter(6)
+        surnoms_animaux=tablewriter(7)
+
+        
+#######################################################
 
         prenom = random.choice(prenoms_masculins + prenoms_feminins)
         nom = random.choice(noms)
@@ -74,7 +103,7 @@ def dumper():
         else:
             freres_soeurs = ""
         
-        if animal is not None:
+        if animal !="None":
             surnom_animal = random.choice(surnoms_animaux)
         else:
             surnom_animal = ""
@@ -183,4 +212,4 @@ def dumper():
     return mdp
     #time.sleep(1000)
         
-#dumper()
+#dumper("frenchdata.csv")
