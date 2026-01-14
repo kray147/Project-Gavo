@@ -54,23 +54,25 @@ def pluscara(table):
         pluscara(table)
     return table
 
-def wordlist(bucle):
-    crit="roar"
-    print(f"Type the words you want to mix up, when you're finished type '{crit}' ")
-    i=1
-    stopval=0
-    wd=[]
-    while stopval != crit:
-        print(f"word n°{i}: ")
-        ask=input()
-        if ask!=crit:
-            wd.append(ask)
-        stopval=ask
-        i=i+1
+def wordlist(bucle,wd):
+    crit="/quit"
     
-    wd=pluscara(wd)
-    print(wd)
-    print("Done, creating the list... \n")
+    if(wd == []):
+        print(f"Type the words you want to mix up, when you're finished type '{crit}' ")
+        i=1
+        stopval=0
+        while stopval != crit:
+            print(f"word n°{i}: ")
+            ask=input()
+            if ask!=crit:
+                wd.append(ask)
+            stopval=ask
+            i=i+1
+        
+        wd=pluscara(wd)
+        print(wd)
+        print("Done, creating the list... \n")
+    
     wd=caps(wd)
     fin=mix(wd)
 
@@ -83,6 +85,7 @@ def wordlist(bucle):
     for i in range(len(fin)):
         file.write(fin[i]+"\n")
     file.close()
+
     print("\n Done !")
     print("Returning to main menu :)")
     time.sleep(0.5)
@@ -90,6 +93,38 @@ def wordlist(bucle):
     if bucle=="":
         __main__()
     return filename
+
+
+
+def opt5():
+    wdg = str(input("Which file would you use to mix-shake ?:\n"))
+
+    """
+    dir=os.path.dirname(__file__)
+    path = os.path.join(dir, wdg)
+    file=open(path,"r")
+"""
+
+
+    os.chdir(os.path.dirname(__file__))
+    file=open(wdg, mode="r",encoding='utf8')
+    #file.readline()
+    data=[]  
+    for line in file:
+        
+        reader=line #.split("\n")
+        #print(reader)
+        data.append(reader.strip("\n"))
+        
+    file.close()
+    print("\n")
+    #print(data)
+    wordlist("", data)
+
+    return 0
+
+
+
 
 
 def passw(passa,patha):
@@ -111,7 +146,7 @@ def passw(passa,patha):
     if not os.path.exists(path):
         print(f"The file {ff} does not exist. Don't forget to put your dictionary in the same directory as this program ! \n")
         time.sleep(5)
-        passw()
+        __main__()
 
     file=open(path,"r+")
     temp=[]
@@ -212,13 +247,14 @@ def __main__():
     print("Type 2 if you wanna test if your dictionnary contain a password\n")
     print("Type 3 if you wanna generate a fake person (profile generator) and test a dictionnary of your own against em\n")
     print("Type 4 if you want to use the profile generator alone\n")
+    print("Type 5 if you want to mix-shake and add fun to a wordlist you already have\n")
     
 
     
     take=int(input("Your choice ?: "))
     if take==1:
         mark=1
-        wordlist("")
+        wordlist("",[])
          
              
     elif take==2:
@@ -229,9 +265,10 @@ def __main__():
         mark=1
         mdp=dumper.dumper(filetoread)
         print("\nNow do ur magic with the dictionnary")
-        pathom=wordlist("ara") #the "ara" thing is here only to not leave wordlist() blank or else it won't do as intended
+        pathom=wordlist("ara",[]) #the "ara" thing is here only to not leave wordlist() blank or else it won't do as intended
         #print("Pour l'instant voilà l'état des choses:", mdp,"et ",pathom)
         passw(mdp,pathom)
+
     elif take==0:
         mark=1
         help()
@@ -240,6 +277,9 @@ def __main__():
         mark=1
         opt4()
 
+    elif take == 5: 
+        mark = 1
+        opt5()
         
     else:
         mark=1
@@ -247,6 +287,7 @@ def __main__():
         print("------------------------------------------------")
         __main__()
     return 0
+
 
 
 __main__()
