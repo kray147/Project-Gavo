@@ -28,9 +28,9 @@ def loading_animation(total_iterations):
 def mix(table):
     tableinf=[]
     for i in range(1,5):
-        for combo in combinations(table, i):
-            for perm in permutations(combo):
-                tableinf.append(''.join(perm))
+        #for combo in combinations(table, i):
+        for perm in permutations(table, i):
+            tableinf.append(''.join(perm))
     
     return tableinf
 
@@ -44,10 +44,10 @@ def caps(table):
     
 
 def pluscara(table):
-    print("Do you wish to add basic characters like '1,2,3,4,5,6,7,8,9,!,_,-' ? [y/n]:")
-    base=input()
-    if base=="y":
-        table.extend(["1","2","3","4","5",'6',"7","8","9","!","_","-"])
+    print("Do you wish to add basic characters like '1,2,3,4,5,6,7,8,9,!,_,-,/,#' ? [y/n]:")
+    base = input()
+    if base == "y":
+        table.extend(["1","2","3","4","5",'6',"7","8","9","!","_","-","/","#"])
         return table
     elif base!="n":
         print("Wrong answer, type a valid answer! \n")
